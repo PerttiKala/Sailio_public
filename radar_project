@@ -1,0 +1,116 @@
+Radar project
+
+-Often use FMCW:
+Transforming this high-level idea into a practical sys-
+tem, however, requires addressing multiple challenges.
+First, measuring the time of flight is difficult since RF
+signals travel very fast – at the speed of light. To distin-
+guish between two locations that are closer than one foot
+apart, one needs to measure differences in reflection time
+on the order of hundreds of picoseconds, which is quite
+challenging. To address this problem, we leverage a tech-
+nique called FMCW (frequency modulated carrier wave)
+which maps differences in time to shifts in the carrier fre-
+quency; such frequency shifts are easy to measure in radio
+systems by looking at the spectrum of the received signal.
+
+
+-Multipath
+A second challenge stems from multipath effects,
+which create errors in mapping the delay of a reflection
+to the distance from the target. WiTrack has to deal with
+two types of multipath effects. Some multipath effects are
+due to the transmitted signal being reflected off walls and
+furniture. Others are caused by the signal first reflecting
+off the human body then reflecting off other objects. This
+is further complicated by the fact that in non-line-of-sight
+settings, the strongest signal is not the one directly bounc-
+ing off the human body. Rather it is the signal that avoids
+the occluding object by bouncing off some side walls.
+WiTrack eliminates reflections from walls and furniture
+by noting that their distance (and time of flight) does not
+change over time. Hence, they can be eliminated by sub-
+tracting consecutive frames of the signals. Reflections that
+involve a combination of a human and some static object
+are more complex and are addressed through filters that
+account for practical constraints on the continuity of hu-
+man motion and its speed in indoor settings.
+Hence, we eliminate the power from these static reflec-
+tors by simply subtracting the output of the FFT in a given
+sweep from the FFT of the signal in the previous sweep.
+This process is called background subtraction because it
+eliminates all the static reflectors in the background.
+
+
+-Direction
+WiTrack has one antenna for transmission and three an-
+tennas for receiving. At a high level, WiTrack’s motion
+tracking works as follows. The device transmits a radio
+signal and uses its reflections to estimate the time it takes
+the signal to travel from the transmitting antenna to the re-
+flecting object and back to each of the receiving antennas.
+WiTrack then uses its knowledge of the position of the an-
+tennas to create a geometric reference model, which maps
+the round trip delays observed by the receive antennas to
+a 3D position of the reflecting body
+Interpolation and filtering.
+
+
+-Applications:
+    -virtual reality and gaming systems
+    -fall detection
+    -controlling appliances by pointing at them
+
+
+-downsides
+    -works for only moving targets
+
+ A second limitation stems from the
+fact that WiTrack needs the user to move in order to locate
+her. This is because WiTrack receives reflections from all
+static objects in the environment; hence, it cannot distin-
+guish the static user from a piece of furniture. To elimi-
+nate these static reflectors, WiTrack subtracts consecutive
+FMCW sweeps. Unfortunately, that eliminates the reflec-
+tions of the static user as well. Future research may ad-
+dress this issue by having WiTrack go through a training
+period where the device is first presented with the space
+without any user so that it may learn the TOFs of the
+static objects. Naturally, this would require retraining ev-
+ery time the static objects are moved in the environment
+
+Tracking one person: Our current design can track only
+one person at any point in time. This does not mean that
+WiTrack requires only one person to be present in the en-
+vironment. Other people can be around, but they have to
+7 To enable WiTrack to track through thicker walls such as concrete
+(as in WiVi), one may add a filter to remove the wall’s reflection.
+be behind the directional antennas. We believe that this
+limitation is not fundamental to the design of WiTrack
+and can be addressed as the research evolves. Consider
+for example, the case of two moving humans. In this case,
+each antenna has to identify two concurrent TOFs (one for
+each person), and hence two ellipsoids. To eliminate the
+ambiguity, one may use more antennas which add more
+constraints to the system.
+
+-Breathing/ vascular monitoring
+Radar-based remote monitoring of vital signs usually relies
+on the phase analysis of the received signal from a given target
+of interest. In the specific case of breathing and heartbeat
+monitoring, the transmitted waveform is phase-modulated by
+the chest-wall displacement caused by the periodic movement
+of the diaphragm and the heart. Figure 1 shows the standard
+block diagram for the receiver of a phase coded pulse-based
+radar system. Following the transmission of N pulses during
+a Coherent Processing Interval (CPI), the received waveform
+is down-converted to baseband and sampled at the receiver
+front end. The resultant I/Q samples usually undergo some pre-
+processing operations before the range/angle matched filtering
+and detection
+
+
+
+
+
+

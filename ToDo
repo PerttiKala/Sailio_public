@@ -1,0 +1,153 @@
+To do:
+
+    > Projektit
+        -Radar
+            1. Esitelmä!!!  [PERJANTAI]
+            2. Lue matskuja
+
+        -ProHa
+            1. Harkka teht.3  [DONE]
+            2. Viikon matskut [DÖNE]
+            3. Moodle tentit
+
+        -SoftWare desing
+            1. Dokumentin väkerrys [DONE]
+        
+        -Digital shadow
+            1. Nauhoita esitelmä [PERJANTAI]
+
+        -Data-intensive programming
+            1. Viikon tehtävät [DONE]
+            2. Projektin aloitus
+
+
+
+
+    > Muuta
+        -Data-intensive programming
+            1. Harkat
+            2. Luento perjantaina klo 12:15
+        
+        -Radar
+            1. Signal processing
+            2. Harkat jos kerkee
+        
+        -SW desing
+            1. Lue matskuja jos kerkeet
+
+        -ProHa 
+            1. Nothing yet 
+            2. Luento torstaina 12:15 [check]
+
+
+Topic 2: Radio Sensing for Indoor Human Targets
+1. Fadel Adib, Zachary Kabelac, Dina Katabi, Robert C. Miller, "3D tracking via body radio
+reflections,". in USENIX NSDI 2014
+2. Fadel Adib, Chen-Yu Hsu, Hongzi Mao, Dina Katabi, and Frédo Durand. "Capturing the
+human figure through a wall. " ACM Trans. Graph. 34, 6, Article 219, 2015.
+https://doi.org/10.1145/2816795.2818072
+3. G. Beltrão, M. Alaee-Kerahroodi, U. Schroeder and M. R. Bhavani Shankar, "Joint
+Waveform/Receiver Design for Vital-Sign Detection in Signal-Dependent Interference,"
+2020 IEEE Radar Conference (RadarConf20), 2020, pp. 1-6, doi:
+10.1109/RadarConf2043947.2020.9266404.
+
+
+Certainly! Here's a breakdown of the text for PowerPoint slides:
+
+Slide 1: Title
+
+    Darkweb and Illicit Information Trade
+
+Slide 2: Introduction
+
+    Overview
+        Darkweb's Rise in Criminal Activities
+        Anonymity Technologies, e.g., Tor
+
+Slide 3: Background
+
+    Understanding Darkweb
+        Similarities to Regular Internet
+        Fundamentals and Infrastructure
+        Tor Network and Onion Service
+
+Slide 4: Anonymity Technologies
+
+    Tor: The Onion Router
+        Concealing Users via Relay Connections
+        Encryption Layers for Untraceable Messages
+        Bandwidth Proportional to Volunteer Relays
+
+Slide 5: Criminal Exploitation
+
+    Impact of Anonymity Technologies
+        Hosting Illegal Services Online
+        Tracking Challenges for Authorities
+        Use of Cryptocurrencies for Transactions (Bitcoin, Monero)
+
+Slide 6: Illegal Products on Darkweb
+
+    Overview
+        Leading Category: Drugs
+        Other Products: Fraud, Digital Goods, Forgeries, Tutorials
+        Focus of this Research: Stolen Information
+
+Slide 7: Research Questions
+
+    Key Queries
+        RQ1: Types of Stolen Information Traded
+        RQ2: Trade Locations and Prices
+        RQ3: Origins of Stolen Information
+        RQ4: Insights into Sellers
+
+Slide 8: Methodology
+
+    Research Approach
+        Exploration of Darkweb Marketplaces
+        Examination of Existing Research Papers
+
+Slide 9: Results - RQ1
+
+    Types of Stolen Information
+        Hacked Accounts/Logins
+        Credit Card Data
+        Leaked Databases (Personal Info, Credentials)
+
+Slide 10: Results - RQ2
+
+    Trade Locations and Prices
+        Darkweb Forums and Tor Marketplaces
+        Price Variations: Small vs. Large Data Chunks
+
+Slide 11: Results - RQ3
+
+    Origins of Stolen Information
+        Unethical Hacking Methods
+        Phishing Attacks, Malware Infections
+        Data Dumping by Malware Networks
+
+Slide 12: Results - RQ4
+
+    Insights into Sellers
+        Name and Reputation Disclosures
+        Snapshot from a Darkweb Marketplace
+
+Slide 13: Conclusion
+
+    Key Takeaways
+        Diverse Stolen Information Trade
+        Darkweb Dynamics and Cybersecurity
+        Necessity for Robust Countermeasures
+
+Slide 14: Future Implications
+
+    Looking Forward
+        Evolving Anonymity Technologies
+        Strategies for Countering Illicit Activities
+
+Slide 15: Q&A
+
+    Questions and Answers
+        Open Floor for Audience Inquiries
+
+
