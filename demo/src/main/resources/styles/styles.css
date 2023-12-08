@@ -1,0 +1,41 @@
+
+.separator .line {
+   -fx-border-color: #323232;
+   -fx-border-width: 1.5;
+}
+
+.toggle-button:selected {
+   -fx-background-color: #e70b0b; /* Change background color to green when selected */
+   -fx-text-fill: white; /* Change text color to white when selected */
+   -fx-font-weight: bold; /* Make the text bold when selected */
+}
+
+.toggle-button {
+   -fx-background-color: #4CAF50; /* Change background color to green when selected */
+   -fx-text-fill: white; /* Change text color to white when selected */
+   -fx-font-weight: bold; /* Make the text bold when selected */
+}
+
+.custom-vbox-shadow {
+   -fx-background-color: white; /* Set the background color to white */
+   -fx-background-radius: 10; /* Set the corner radius for the background */
+   -fx-padding: 10; /* Add some padding inside the VBox */
+   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0); /* Apply a drop shadow */
+}
+
+.text-title {
+    -fx-font-size: 18px; /* Set the font size */
+    -fx-font-weight: normal; /* Set the font weight to normal */
+    -fx-text-fill: black;
+}
+
+.spacing-10 {
+   -fx-alignment: center;
+   -fx-spacing: 10;
+}
+
+.text-subtitle {
+    -fx-font-size: 12px; /* Set the font size */
+    -fx-font-weight: normal; /* Set the font weight to normal */
+    -fx-text-fill: black;
+}
