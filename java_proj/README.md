@@ -1,3 +1,11 @@
+This application was a school project for Software Design -course and was made in a group of four.
+I was responsible for following parts:
+    -Made class diagrams 
+    -Wrote sections (to the Documentation): Self-evaluation (partially), Description of components, Thrid-party components, Potential issues 
+    -Implemented fetching and displaying of WeatherData 
+    -Implemented functionality that takes parameters from GUI to data fetchers 
+    -Added select visualization 
+
 Tuni virtual desktop WINDOWS:
 Setting the environment
 1. Launch TUNI Windows Virtual Desktop
