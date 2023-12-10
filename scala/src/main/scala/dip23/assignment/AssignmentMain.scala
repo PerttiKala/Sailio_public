@@ -63,7 +63,7 @@ object AssignmentMain extends App {
       .filter(col("Year") >= 2000 && col("Year") <= 2009 && col("Publisher") === "Nintendo")
       .groupBy("Year")
       .agg(sum(col("EU_Sales")).alias("eu_sales"), sum(col("Global_Sales")))
-      .sort(col("Year").desc)
+      .sort(col("Year"))
 
     println(s"The publisher with the highest total video game sales in European Union is: '${bestEUPublisher}'")
     println("Sales data for the publisher:")
@@ -77,14 +77,17 @@ object AssignmentMain extends App {
     val shotsDF: DataFrame = spark
       .read.parquet("../data/nhl_shots.parquet")
 
-    shotsDF.filter(col("season") === 2011  && col("time") > 3600).limit(500).show()
+//    shotsDF.filter(col("season") === 2011  && col("time") > 3600).limit(500).show()
 
 
     printTaskLine("Basic Task 3")
     // ==========================
 
 
-  // homeTeamGoalsNew contains goals that are made after 60 minutes and not marked to database
+  // homeTeamGoalsNew and awayTeamGoalsNew -> added there because event "GOAL" does not update TeamGoals column
+  // I suppose that in example these values are calculated using event column and this may cause some difference
+  // when comparing to my values
+
     val help1DF: DataFrame = shotsDF
       .groupBy("season", "game_id")
       .agg(max("awayTeamGoals").alias("awayTeamGoals"),
@@ -114,8 +117,8 @@ object AssignmentMain extends App {
     val gamesDF = help2DF.join(help1DF, Seq("season", "game_id"), "inner")
 
 
-    gamesDF.filter(col("game_id") === 30116).limit(20).show()
-    println(gamesDF.count())
+//    gamesDF.filter(col("game_id") === 30116).limit(20).show()
+//    println(gamesDF.count())
 
     printTaskLine("Basic Task 4")
 
@@ -125,8 +128,8 @@ object AssignmentMain extends App {
       .filter(col("isPlayOffGame") === 1)
       .groupBy("season", "homeTeamCode")
       .agg(count("*").alias("homeGames"),
-          count(when(col("homeTeamGoals") > col("awayTeamGoals"), true)).alias("homeWins"),
-          count(when(col("homeTeamGoals") < col("awayTeamGoals"), true)).alias("homeLoses")
+          count(when(col("homeTeamGoalsNew") > col("awayTeamGoalsNew"), true)).alias("homeWins"),
+          count(when(col("homeTeamGoalsNew") < col("awayTeamGoalsNew"), true)).alias("homeLoses")
       )
       .withColumnRenamed("homeTeamCode", "teamCode")
 
@@ -134,8 +137,8 @@ object AssignmentMain extends App {
       .filter(col("isPlayOffGame") === 1)
       .groupBy("season", "awayTeamCode")
       .agg(count("*").alias("awayGames"),
-          count(when(col("homeTeamGoals") < col("awayTeamGoals"), true)).alias("awayWins"),
-          count(when(col("homeTeamGoals") > col("awayTeamGoals"), true)).alias("awayLoses")
+          count(when(col("homeTeamGoalsNew") < col("awayTeamGoalsNew"), true)).alias("awayWins"),
+          count(when(col("homeTeamGoalsNew") > col("awayTeamGoalsNew"), true)).alias("awayLoses")
       )
       .withColumnRenamed("awayTeamCode", "teamCode")
 
@@ -147,8 +150,8 @@ object AssignmentMain extends App {
       .withColumn("losses", col("homeLoses") + col("awayLoses"))
       .select("season", "teamCode", "games", "wins", "losses")
 
-    playoffDF.filter(col("season") === 2021).limit(5).show()
-    println(playoffDF.count())
+//    playoffDF.filter(col("season") === 2021).limit(5).show()
+//    println(playoffDF.count())
 
 
     printTaskLine("Basic Task 5")
@@ -197,6 +200,7 @@ object AssignmentMain extends App {
               .otherwise(when(col("homeTeamGoals") === col("awayTeamGoals") && col("homeTeamWon") === 0, 2)
               .otherwise(when(col("homeTeamGoals") < col("awayTeamGoals"), 3)
                 .otherwise(0)))))
+
       .withColumn("homeTeamWonSecond", when(col("pointsHome") > 1, 1).otherwise(0))
       .withColumn("awayTeamWonSecond", when(col("pointsAway") > 1, 1).otherwise(0))
       .withColumn("homeTeamGoalsNew",
@@ -206,7 +210,7 @@ object AssignmentMain extends App {
         when(col("homeTeamGoals") === col("awayTeamGoals") && col("homeTeamWon") === 0, col("awayTeamGoals") + 1)
           .otherwise(col("awayTeamGoals")))
 
-  regularHelpDF.where(col("season") === 2013).limit(20).show()
+//  regularHelpDF.where(col("season") === 2013).limit(20).show()
 
     // Counting amount of games played
     val regularHelp2 = regularHelpDF
@@ -270,7 +274,7 @@ object AssignmentMain extends App {
       .withColumn("points", col("homePoints") + col("awayPoints"))
       .select("season", "teamCode", "games", "wins", "losses", "goalsScored", "goalsConceded", "points")
 
-    regularSeasonDF.limit(10).show()
+//    regularSeasonDF.limit(10).show()
 
     printTaskLine("Basic Task 7")
     // ==========================
