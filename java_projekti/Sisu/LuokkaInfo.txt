@@ -1,0 +1,38 @@
+--------------- GetTutkinnot --------------
+
+Tarkoitus:
+- Hakee Sisusta kaikki tutkinto-ohjelmat ja palauttaa ne listana Module-tyyppisinä
+
+Toiminta:
+- Linkistä: https://sis-tuni.funidata.fi/kori/api/module-search?curriculumPeriodId=uta-lvv-2021&universityId=tuni-university-root-id&moduleType=DegreeProgramme&limit=1000
+  haetaan JSON-tiedosto, josta saadaan silmukalla tutkinto-ohjelmien nimet ja id:t
+
+
+-------------- GetSubmodules --------------
+
+Tarkoitus:
+- Hakee valitulle tutkinto-ohjelmalle alimoduulit sekä kurssit rekursiivisesti.
+  Alimoduulit ja kurssit lisätään aina ylemmän moduulin lapsiksi jolloin tiedot
+  saadaan puu-tyyliseen tietorakenteeseen.
+
+Toiminta:
+- Hakee paremetrinä olevan Moduulin 'this_module':n id:n avulla Sisusta
+  JSON-tiedoston josta löytyy moduulin nimi ja alimoduulit. Alimoduulien 
+  tiedot saadaan metodin get_rules avulla. Tämän jälkeen alimoduulit käydään
+  silmukassa läpi. Jos kyseessä on alimoduuli, kutsutaan metodia uudestaan
+  kyseisellä alimoduulilla ja lisätään tämä parametrinä olevan moduulin parent
+  lapseksi. Jos kyseessä on kurssi, rekursio saavuttaa pään ja vain lisätään
+  kurssi parentin lapseksi.
+
+
+-------------- Module --------------
+
+Tarkoitus:
+- Toimii tietotyyppinä tutkinto-ohjelmille, alimoduuleille, sekä kursseille.
+
+Tärkeimmät atribuutit:
+- String nimi
+- String id
+- boolean completed, (onko kurssi suoritettu vai ei)
+- ArrayList<Module> submodules, (tähän lisätään moduulin alimoduulit ja saadaan
+  näin muodostettua puu-tyyppinen tietorakenne)
