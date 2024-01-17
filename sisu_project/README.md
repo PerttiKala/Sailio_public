@@ -1,34 +1,9 @@
-This application was a school project for Software Design -course and was made in a group of four.
-I was responsible for following parts:
-1. Made class diagrams 
-2. Wrote sections (to the Documentation): Self-evaluation (partially), Description of components, Thrid-party components, Potential issues 
-3. Implemented fetching and displaying of WeatherData 
-4. Implemented functionality that takes parameters from GUI to data fetchers 
-5. Added select visualization 
+# Programming 3 project template
 
-Tuni virtual desktop WINDOWS:
-Setting the environment
-1. Launch TUNI Windows Virtual Desktop
-2. On command line run `setx JAVA_HOME "C:\Apps\Java\OpenJDK17_x64"` to set your user's JAVA to a JDK.
-3. Restart command line console to apply changes.
+Make sure you have setup ssh-key for your GitLab account.
 
-Running the application (Instructions apply Git Bash)
-1. Open command line 
-2. Change drive to C drive with "cd /c" command.
-3. Navigate to Users/your_user_shortname.
-4. Create a folder to a location of your choosing and clone the git repo. 
-5. Run application with `./start.sh` command on command line in "demo" directory.
-6. App should be compiled and started
-7. Or you can use commmand `./mvnw clean javafx:run`
+Some example JSON files are under the `json` subdirectory. The file `json/modules/otm-3990be25-c9fd-4dae-904c-547ac11e8302.json` is a root level `DegreeProgramme` module.
 
-The JAVA_HOME needs to be changed as the virtual desktop defaults to JRE.
-Instructions have been tested with C drive, may or may not work with other drives. 
-Windows is the main environment and the functionality is guaranteed with Windows. 
-LINUX is offered as an option.
+Note! The .gitlab-ci.yml is offline at the moment.
 
-Tuni virtual desktop LINUX:
-1. Create new folder and clone git repo.
-2. Run application with `sh start.sh` command on command line in "demo" directory.
-3. Or you can use commmand `sh mvnw clean javafx:run`
-
-No set up should be required on LINUX. 
+# You are allowed (and probably should) make changes to this file after you have started your project. :)
